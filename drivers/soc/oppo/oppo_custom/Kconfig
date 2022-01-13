@@ -1,0 +1,6 @@
+config OPPO_CUSTOM
+	bool "config oppo custom"
+	help
+		define this config to compile oppo_custom.c for device register
+
+

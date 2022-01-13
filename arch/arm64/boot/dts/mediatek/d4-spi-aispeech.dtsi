@@ -1,0 +1,73 @@
+
+&spi5 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	dbmd4_spi:dbmd4_interface@0 {
+		compatible = "dspg,dbmd4-spi";
+		reg = <0>;
+		spi-max-frequency = <1000000>;
+		read-chunk-size  = <0x2000>;    /* 16*16*16*16*2 bytes   */
+		write-chunk-size = <0x40000>;   /* 1000 bytes */
+		dma_min_buffer_size = <0>;
+		status = "okay";
+	};
+};
+
+&dbmdx {
+
+		reset-gpio = <&pio 100 0x0>; /* GPX1.3 */
+		sv-gpio = <&pio 84 0x0>; /* GPX1.5 */
+		wakeup-gpio = <&pio 85 0x0>; /* GPA0.1 */
+
+		auto_buffering = <1>;
+		multi-interface-support = <1>;
+		cd-interfaces = <&dbmd4_spi >;
+		va-interfaces = <0 0 0 0>;
+		feature-va; /* enable VA */
+		va-firmware-name = "dbmd4_va_fw.bin";
+		va-config = <0x800C2400
+			     0x80290020
+			     0x802210E0
+			     0x80330156
+			     0x80091300
+			     0x80158E8E
+			     0x8018000A
+			     0x801b0020
+			     0x80230000
+			     0x801A0012
+			     0x80108000
+			     0x8aab0040
+			     0x805004B0
+			     0x805104B0
+			     0x8016000C
+			     0x80410001>;
+		va-speeds = <0x0000 460800  0 960000
+			     0x0000 2000000 0 4800000
+			     0x0000 3000000 0 4800000>;
+		va-mic-config = <0xa011 0x1044 0x0008>;
+		va-mic-mode = <0>;
+		master-clk-rate = <32768>;
+		/* constant-clk-rate = <32768>; */
+		firmware_id = <0xdbd4>;
+		use_gpio_for_wakeup = <1>; /* Use wakeup gpio */
+		wakeup_set_value = <0>;  /* Value to write to wakeup gpio */
+		auto_detection = <1>;
+		detection_buffer_channels = <0>;
+		min_samples_chunk_size = <128>;
+		pcm_streaming_mode = <1>;
+		boot_options = <0x200>; /* Verify chip id */
+		amodel_options = <0x4>;
+		send_uevent_on_detection = <1>;
+		send_uevent_after_buffering = <0>;
+		detection_after_buffering = <0>;
+		va_backlog_length = <0x780>;
+		va_advanced_options = <0x1D>; /* Split Passphrase/Buf, Send det and buf events, Send event after passphrase */
+		va_passphrase_margins = <0x00320640>;
+};
+
+	
+
+
+
+

@@ -1,0 +1,1 @@
+obj-y		+= oppo_m1120.o

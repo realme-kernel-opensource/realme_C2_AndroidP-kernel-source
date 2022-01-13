@@ -1,0 +1,75 @@
+source "drivers/power/avs/Kconfig"
+source "drivers/power/reset/Kconfig"
+source "drivers/power/supply/Kconfig"
+
+#ifdef VENDOR_EDIT /* Jianchao.Shi@BSP.CHG.Basic, 2018/11/09, sjc Add for charging */
+source "drivers/power/oppo/Kconfig"
+
+config OPPO_CHARGER
+	bool "OPPO_CHARGER"
+	default n
+	help
+	  Set Yes to support OPPO_CHARGER features
+	  smart battery.
+	  Set No to disable OPPO_CHARGER features
+	  smart battery.
+
+config OPPO_CHARGER_MTK
+	bool "OPPO charger on MTK"
+	default n
+	help
+	  Say Yes here to declare charging system is on MTK
+	  Say No here to declare charging system is not on MTK
+
+config OPPO_CHARGER_MTK_CHGIC
+	bool "OPPO_CHARGER_MTK_CHG_IC"
+	default n
+	help
+	  Say Yes to use MTK platform charger ic
+	  Say No to use extern charger ic
+
+config OPPO_CHARGER_MTK6779
+	bool "OPPO_CHARGER_MTK6779"
+	default n
+	help
+	  Set yes to support OPPO_CHARGER_MTK6779 features
+	  smart battery.
+	  Set No to disable OPPO_CHARGER_MTK6779 features
+	  smart battery.
+
+config OPPO_CHECK_CHARGERID_VOLT
+	bool "OPPO_CHECK_CHARGERID_VOLT"
+	default n
+	help
+	  Set yes to support OPPO_CHECK_CHARGERID_VOLT features
+	  smart battery.
+	  Set No to disable OPPO_CHECK_CHARGERID_VOLT features
+	  smart battery.
+
+config OPPO_4400MV_BATTERY_SUPPORT
+	bool "OPPO_CHECK_CHARGERID_VOLT"
+	default n
+	help
+	  Set yes to support BATTERYID features
+	  smart battery.
+	  Set No to disable BATTERYID features
+	  smart battery.
+
+config OPPO_CALL_MODE_SUPPORT
+	bool "OPPO call mode support"
+	default n
+	help
+	  Say Y to enable support for the oppo call mode.
+
+config OPPO_SHIP_MODE_SUPPORT
+	bool "OPPO ship mode support"
+	default n
+	help
+	  Say Y to include support
+
+config OPPO_SHORT_HW_CHECK
+	bool "OPPO batt HW SHORT"
+	default n
+	help
+	  Say Y to include support
+#endif /* VENDOR_EDIT */

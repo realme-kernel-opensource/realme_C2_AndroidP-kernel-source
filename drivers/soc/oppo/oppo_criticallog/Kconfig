@@ -1,0 +1,4 @@
+config OPPO_CRITICALLOG
+	bool "config oppo critical log"
+	help
+		define this config to init oppo critical log driver.
